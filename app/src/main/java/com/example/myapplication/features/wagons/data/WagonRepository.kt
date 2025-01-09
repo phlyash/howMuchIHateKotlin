@@ -9,6 +9,7 @@ interface WagonRepository {
     suspend fun getWagon(id: Int): Wagon
     fun updateWagon(id: Int, train: Wagon): Call<Wagon>
     fun deleteWagon(id:Int): Call<Wagon>
+    fun createWagon(wagon: Wagon): Call<Wagon>
 }
 
 class WagonRepositoryImpl(private val service: WagonService, private val name: String): WagonRepository, PagingSource<Int, Wagon>() {
@@ -23,6 +24,10 @@ class WagonRepositoryImpl(private val service: WagonService, private val name: S
 
     override fun deleteWagon(id: Int): Call<Wagon> {
         return service.deleteWagon(id)
+    }
+
+    override fun createWagon(wagon: Wagon): Call<Wagon> {
+        return service.createWagon(wagon)
     }
 
     override fun getRefreshKey(state: PagingState<Int, Wagon>): Int? {

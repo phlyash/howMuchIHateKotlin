@@ -44,11 +44,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Train name"/>
-            <EditText
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Locomotive:"/>
+            <Spinner
                 android:id="@+id/locomotive"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Locomotive"/>
+<!--            <EditText-->
+<!--                android:id="@+id/locomotive"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:hint="Locomotive"/>-->
             <EditText
                 android:id="@+id/route"
                 android:layout_width="match_parent"

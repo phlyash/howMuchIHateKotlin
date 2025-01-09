@@ -13,7 +13,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:navigationIcon="@drawable/ic_back"
+            app:navigationIcon="@android:drawable/ic_menu_revert"
             app:navigationIconTint="@color/white"
             app:title="Edit Locomotive"
             android:background="@color/red"
@@ -45,7 +45,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Wagon train"/>
-            <EditText
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wagon type:"
+                />
+            <Spinner
                 android:id="@+id/wagon_type"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

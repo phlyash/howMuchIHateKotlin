@@ -31,7 +31,7 @@ class WagonAdapter(val fragmentManager: FragmentManager) : PagingDataAdapter<Wag
 
         fun bind(wagon: Wagon) {
             wagonTrainText.text = "Train: ${wagon.train_id}"
-            wagonTypeText.text = "Wagon type: ${wagon.wagon_type}"
+            wagonTypeText.text = "Wagon type: ${wagon.wagon_type_name}"
 
             when (wagon.wagon_type) {
                 1 -> imageView.setImageResource(R.drawable.wagon_grain)

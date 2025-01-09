@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".features.statistics.view.StatisticsFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:id="@+id/appbar_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/red"
+        android:layout_gravity="top"
+        >
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/menu_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="RZD"
+            app:titleTextColor="@android:color/white" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <TextView
+        android:id="@+id/total_wagons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/appbar_top"
+        android:fontFamily="serif-monospace"
+        android:text="total wagons: "
+        android:textSize="50px"/>
+
+    <TextView
+        android:id="@+id/popular_wagon_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/total_wagons"
+        android:fontFamily="serif-monospace"
+        android:text="most popular wagon type: "
+        android:textSize="50px"/>
+
+    <TextView
+        android:id="@+id/popular_locomotive"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/popular_wagon_type"
+        android:fontFamily="serif-monospace"
+        android:text="most popular locomotive: "
+        android:textSize="50px"/>
+
+    <TextView
+        android:id="@+id/popular_route"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/popular_locomotive"
+        android:fontFamily="serif-monospace"
+        android:text="most popular route: "
+        android:textSize="50px"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

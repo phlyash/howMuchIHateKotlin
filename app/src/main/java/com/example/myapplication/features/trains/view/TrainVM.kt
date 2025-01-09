@@ -1,6 +1,5 @@
 package com.example.myapplication.features.trains.view
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -33,6 +32,16 @@ class TrainVM (
                 }
             })
 
+    }
+
+    fun createTrain(train: Train) {
+        repository.createTrain(train).enqueue(object : Callback<Train> {
+            override fun onResponse(call: Call<Train>, response: Response<Train>) {
+            }
+
+            override fun onFailure(call: Call<Train>, t: Throwable) {
+            }
+        })
     }
 
     fun deleteTrain(id: Int) {

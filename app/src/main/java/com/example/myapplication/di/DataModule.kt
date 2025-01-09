@@ -4,6 +4,7 @@ import com.example.myapplication.features.locomotives.data.LocomotivePagingSourc
 import com.example.myapplication.features.trains.data.TrainPagingSource
 import com.example.myapplication.features.locomotives.data.LocomotiveRepository
 import com.example.myapplication.features.locomotives.data.LocomotiveRepositoryImpl
+import com.example.myapplication.features.statistics.data.StatisticsRepository
 import org.koin.core.module.dsl.bind
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
@@ -16,6 +17,8 @@ import com.example.myapplication.features.trains.data.TrainTypeRepositoryImpl
 import com.example.myapplication.features.wagons.data.WagonPagingSource
 import com.example.myapplication.features.wagons.data.WagonTypeRepository
 import com.example.myapplication.features.wagons.data.WagonTypeRepositoryImpl
+import com.example.myapplication.features.statistics.data.StatisticsRepositoryImpl
+
 
 
 val dataModule = module {
@@ -42,5 +45,8 @@ val dataModule = module {
     }
     singleOf(::WagonPagingSource) {
         bind<WagonPagingSource>()
+    }
+    singleOf(::StatisticsRepositoryImpl) {
+        bind<StatisticsRepository>()
     }
 }

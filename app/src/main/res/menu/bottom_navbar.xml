@@ -17,4 +17,12 @@
         android:enabled="true"
         android:icon="@drawable/locomotive"
         android:title="@string/locomotives" />
+
+    <item
+        android:id="@+id/statistics"
+        android:enabled="true"
+        android:icon="@drawable/statistics"
+        android:title="@string/statistics"
+        />
+
 </menu>

@@ -10,11 +10,11 @@ interface TrainTypeRepository {
 class TrainTypeRepositoryImpl(private val service: TrainTypeService): TrainTypeRepository {
     override suspend fun getTrainTypes(): List<TrainType> {
         val body = service.trainTypes().body()!!
-        return body
+        return body.results.orEmpty()
     }
 
     override suspend fun getTrainType(id: Int): TrainType {
         val body = service.trainType(id).body()!!
-        return body
+        return body.results.orEmpty()[0]
     }
 }

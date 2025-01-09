@@ -36,6 +36,18 @@ class WagonVM (
 
     }
 
+    fun createWagon(wagon: Wagon) {
+        repository.createWagon(wagon).enqueue(object : Callback<Wagon> {
+            override fun onResponse(call: Call<Wagon>, response: Response<Wagon>) {
+                // handle the response
+            }
+
+            override fun onFailure(call: Call<Wagon>, t: Throwable) {
+                // handle the failure
+            }
+        })
+    }
+
     fun deleteWagon(id: Int) {
         repository.deleteWagon(id).enqueue(object : Callback<Wagon> {
             override fun onResponse(call: Call<Wagon>, response: Response<Wagon>) {

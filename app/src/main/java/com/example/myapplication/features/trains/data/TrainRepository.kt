@@ -10,6 +10,7 @@ interface TrainRepository {
     suspend fun getTrain(id: Int): Train
     fun updateTrain(id: Int, train: Train): Call<Train>
     fun deleteTrain(id:Int): Call<Train>
+    fun createTrain(train: Train): Call<Train>
 }
 
 class TrainRepositoryImpl(private val service: TrainService, private val name: String): TrainRepository, PagingSource<Int, Train>() {
@@ -24,6 +25,10 @@ class TrainRepositoryImpl(private val service: TrainService, private val name: S
 
     override fun deleteTrain(id: Int): Call<Train> {
         return service.deleteTrain(id)
+    }
+
+    override fun createTrain(train: Train) : Call<Train> {
+        return service.createTrain(train)
     }
 
     override fun getRefreshKey(state: PagingState<Int, Train>): Int? {

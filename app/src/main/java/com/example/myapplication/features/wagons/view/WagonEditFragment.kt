@@ -5,9 +5,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
@@ -15,19 +17,14 @@ import com.example.myapplication.R
 import com.example.myapplication.features.pdfUtils.createAndOpenPdf
 import com.example.myapplication.features.wagons.models.Wagon
 import org.koin.android.ext.android.get
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
-
-
-/**
- * A simple [Fragment] subclass.
- * Use the [TrainEditFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 
 const val WAGON_ID = "wagon_id"
 
 class WagonEditFragment : Fragment() {
     private val vm = get<WagonVM> { parametersOf("") }
+    private val wtvm: WagonTypeVM by viewModel()
     private var wagonId: Int = 0
     private lateinit var wagon: Wagon
 
@@ -50,19 +47,31 @@ class WagonEditFragment : Fragment() {
         super.onStart()
 
         wagonId.let { vm.fetchWagon(it) }
+        wtvm.fetchTrainTypes()
 
         val wagonTrain = view?.findViewById<EditText>(R.id.wagon_train)
-        val wagonType = view?.findViewById<EditText>(R.id.wagon_type)
+        val wagonType = view?.findViewById<Spinner>(R.id.wagon_type)
         val imageView = view?.findViewById<ImageView>(R.id.image)
         val updateButton = view?.findViewById<Button>(R.id.buttonSave)
         val deleteButton = view?.findViewById<Button>(R.id.buttonDelete)
         val qrButton = view?.findViewById<Button>(R.id.buttonQr)
 
+        wtvm.wagon_types.observe(viewLifecycleOwner) {
+            val strings = ArrayList<String>()
+            for (wT in it) {
+                strings.add(wT.name)
+            }
+
+            val adapter: ArrayAdapter<String> = ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_item, strings)
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            wagonType?.setAdapter(adapter)
+        }
+
         vm.wagon.observe(viewLifecycleOwner) {
             wagon = Wagon(it.id, it.wagon_type, it.train_id)
 
             wagonTrain?.setText(wagon.train_id.toString())
-            wagonType?.setText(wagon.wagon_type.toString())
+//            wagonType?.setText(wagon.wagon_type.toString())
 
             if (wagon.wagon_type == 5) {
                 qrButton?.visibility = View.VISIBLE
@@ -82,7 +91,7 @@ class WagonEditFragment : Fragment() {
         }
 
         updateButton?.setOnClickListener {
-            val wagon = Wagon(wagonId, wagonType?.text.toString().toInt(), wagonTrain?.text.toString().toInt())
+            val wagon = Wagon(wagonId, wagonType?.selectedItem.toString().length, wagonTrain?.text.toString().toInt())
             vm.updateWagon(wagonId, wagon)
 
             requireFragmentManager().beginTransaction().apply {

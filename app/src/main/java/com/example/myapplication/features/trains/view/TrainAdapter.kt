@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.features.trains.models.Train
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class TrainAdapter(val fragmentManager: FragmentManager) : PagingDataAdapter<Train, TrainAdapter.TrainHolder>(TrainDiffCallback) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrainHolder {
@@ -34,8 +35,8 @@ class TrainAdapter(val fragmentManager: FragmentManager) : PagingDataAdapter<Tra
 
         fun bind(train: Train) {
             nameText.text = "Train name: ${train.name}"
-            trainTypeText.text = "Train type: ${train.train_type}"
-            locomotiveText.text = "Locomotive: ${train.locomotive}"
+            trainTypeText.text = "Train type: ${train.train_type_name}"
+            locomotiveText.text = "Locomotive: ${train.locomotive_name}"
             routeText.text = "route: ${train.route}"
 
             when (train.train_type) {

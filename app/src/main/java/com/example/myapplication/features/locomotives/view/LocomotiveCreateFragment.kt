@@ -15,13 +15,6 @@ import com.example.myapplication.R
 import com.example.myapplication.features.locomotives.models.Locomotive
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
-/**
- * A simple [Fragment] subclass.
- * Use the [TrainEditFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-
 class LocomotiveCreateFragment : Fragment() {
     private val vm: LocomotiveVM by viewModel()
 
