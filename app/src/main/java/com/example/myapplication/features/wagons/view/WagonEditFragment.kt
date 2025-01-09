@@ -71,6 +71,7 @@ class WagonEditFragment : Fragment() {
             wagon = Wagon(it.id, it.wagon_type, it.train_id)
 
             wagonTrain?.setText(wagon.train_id.toString())
+            wagonType?.setSelection(it.wagon_type - 1)
 //            wagonType?.setText(wagon.wagon_type.toString())
 
             if (wagon.wagon_type == 5) {

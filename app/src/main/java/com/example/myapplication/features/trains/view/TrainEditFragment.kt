@@ -72,6 +72,7 @@ class TrainEditFragment : Fragment() {
         trainVM.train.observe(viewLifecycleOwner) {
             val train = Train(it.id, it.name, it.locomotive, it.route, it.train_type)
 
+            locomotive?.setSelection(it.train_type - 1)
             trainName?.setText(it.locomotive_name)
 
             route?.setText(train.route.toString())
