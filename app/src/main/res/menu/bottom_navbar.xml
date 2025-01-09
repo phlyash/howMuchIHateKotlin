@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/trains"
+        android:enabled="true"
+        android:icon="@drawable/train"
+        android:title="@string/trains" />
+
+    <item
+        android:id="@+id/wagons"
+        android:enabled="true"
+        android:icon="@drawable/wagon"
+        android:title="@string/wagons" />
+
+    <item
+        android:id="@+id/locomotives"
+        android:enabled="true"
+        android:icon="@drawable/locomotive"
+        android:title="@string/locomotives" />
+</menu>

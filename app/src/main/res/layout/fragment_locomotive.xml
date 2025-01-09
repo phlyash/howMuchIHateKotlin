@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".features.locomotives.view.LocomotiveFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:paddingTop="64dp"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:id="@+id/locomotive_recycler"/>
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/red">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/menu_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="RZD"
+            app:menu="@menu/menu_top"
+            app:titleTextColor="@android:color/white" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+</FrameLayout>
